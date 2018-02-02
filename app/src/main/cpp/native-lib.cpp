@@ -92,7 +92,7 @@ Java_com_fastaoe_ndkdemo1_SignatureUtil_signatureVerify(JNIEnv *env, jclass type
     jobject signatures_first = env->GetObjectArrayElement(j_signature, 0);
     // signatures[0].toCharsString()
     j_clz = env->GetObjectClass(signatures_first);
-    j_mid = env->GetMethodID(j_clz,"toCharsString","()Ljava/lang/String;");
+    j_mid = env->GetMethodID(j_clz, "toCharsString", "()Ljava/lang/String;");
     jstring j_signature_str = (jstring) env->CallObjectMethod(signatures_first, j_mid);
     // 4. 比较
     const char *c_signature_str = env->GetStringUTFChars(j_signature_str, NULL);
@@ -100,7 +100,7 @@ Java_com_fastaoe_ndkdemo1_SignatureUtil_signatureVerify(JNIEnv *env, jclass type
         return;
     }
 
-    __android_log_print(ANDROID_LOG_ERROR,"JNI_TAG","签名校验成功: %s",c_signature_str);
+    __android_log_print(ANDROID_LOG_ERROR, "JNI_TAG", "签名校验成功: %s", c_signature_str);
 
     is_verify = 1;
 }
